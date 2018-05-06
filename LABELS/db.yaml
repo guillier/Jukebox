@@ -1,0 +1,24 @@
+- title1: Old-style Music
+  title2: Dee Yan-Key
+  image: old-style.jpg
+  category: music2
+  duration: "1'03"
+  print: yes
+- title1: Village Fair
+  title2: Dee Yan-Key
+  image: village.jpg
+  category: music2
+  duration: "0'45"
+  print: yes
+- title1: Discount Fireworks
+  image: colours.jpg
+  category: music1
+  duration: "0'39"
+  print: yes
+- name: The guitar
+  nom: La guitare
+  image: guitar.jpg
+  category: instrument
+  print: yes
+
+
