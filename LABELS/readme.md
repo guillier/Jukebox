@@ -1,4 +1,44 @@
 
+# Usage
+
+```./jukebox.py [first label position]```
+
+The label positions are counted from the bottom-left-hand side of the page.
+If it seems a bit counter intuitive at first, there are 2 good reasons for this:
+* The PDF coordinate system is working that way, so there is no need to swap values
+* When printing with an inkjet printer, it is better if the feeding of the page is starting with the thickest part (i.e. with labels still present). By printing, thus removing, labels always at the bottom, it is safer when doing it by small batches.
+
+
+Once a label printed, the database file ```db.yaml``` needs to be updated with ```print: no```.
+
+
+# Database format
+
+The 'database' file ```db.yaml``` is in [http://yaml.org/](YAML) and the fields are :
+
+* For the music labels
+    * title1 [mandatory, Title of the piece]
+    * title2 [optional, usually Album or Composer]
+    * image [mandatory, filename]
+    * category [mandatory (music1, music2, music3)]
+    * duration [optional]
+    * print [optional, "yes" by default]
+* For the word/picture labels
+    * name [mandatory, Name in one language]
+    * nom [mandatory, Name in another language]
+    * image [mandatory, filename]
+    * category [mandatory (instrument)]
+    * print [optional, "yes" by default]
+
+
+# Image dimensions
+
+Images are automatically resized and stretched but for best results, the following size are recommended:
+
+* For the music labels : 780 x 342 pixels
+* For the word/picture labels : 552 x 638 pixels
+
+
 # Sources of materials
 
 ## Font
