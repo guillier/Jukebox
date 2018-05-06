@@ -20,6 +20,6 @@ This Font Software is licensed under the SIL Open Font License, Version 1.1.
 
 (Creative Commons Attribution-NoDerivs 3.0)
 
-* [https://www.iconsdb.com/red-icons/speaker-icon.html](Red Speaker)
-* [https://www.iconsdb.com/red-icons/saxophone-icon.html](Red Saxophone)
+* [https://www.iconsdb.com/red-icons/speaker-icon.html](https://www.iconsdb.com/red-icons/speaker-icon.html) (Red Speaker)
+* [https://www.iconsdb.com/red-icons/saxophone-icon.html](https://www.iconsdb.com/red-icons/saxophone-icon.html) (Red Saxophone)
 
