@@ -1,0 +1,11 @@
+[Unit]
+Description=Jukebox
+ConditionPathExists=/var/lib/alsa/asound.state
+
+[Service]
+User=pi
+ExecStart=/bin/bash -c "mkdir -p /dev/shm/pi/config; cd /MUSIC/_PLAYER ; ./play.py"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
