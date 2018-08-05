@@ -6,9 +6,7 @@ if [ $(id -u) -ne 0 ]; then
 	exit 1
 fi
 
-INSTALL_RW_JUMPER=0
 RW_PIN=26
-INSTALL_HALT=0
 HALT_PIN=22
 RF_PIN=21
 
@@ -83,51 +81,6 @@ echo "Installing busybox-syslogd..."
 apt-get -y --force-yes install busybox-syslogd; dpkg --purge rsyslog
 
 echo "Configuring system..."
-
-# Install boot-time R/W jumper test if requested
-GPIOTEST="gpio -g mode $RW_PIN up\n\
-if [ \`gpio -g read $RW_PIN\` -eq 0 ] ; then\n\
-\tmount -o remount,rw \/\n\
-\tmount -o remount,rw \/boot\n\
-fi\n"
-if [ $INSTALL_RW_JUMPER -ne 0 ]; then
-	apt-get install -y --force-yes wiringpi
-	# Check if already present in rc.local:
-	grep "gpio -g read" /etc/rc.local >/dev/null
-	if [ $? -eq 0 ]; then
-		# Already there, but make sure pin is correct:
-		sed -i "s/^.*gpio\ -g\ read.*$/$GPIOTEST/g" /etc/rc.local >/dev/null
-
-	else
-		# Not there, insert before final 'exit 0'
-		sed -i "s/^exit 0/$GPIOTEST\\nexit 0/g" /etc/rc.local >/dev/null
-	fi
-fi
-
-# Install gpio-halt if requested
-if [ $INSTALL_HALT -ne 0 ]; then
-	apt-get install -y --force-yes wiringpi
-	echo "Installing gpio-halt in /usr/local/bin..."
-	cd /tmp
-	curl -LO https://github.com/adafruit/Adafruit-GPIO-Halt/archive/master.zip
-	unzip master.zip
-	cd Adafruit-GPIO-Halt-master
-	make
-	mv gpio-halt /usr/local/bin
-	cd ..
-	rm -rf Adafruit-GPIO-Halt-master
-
-	# Add gpio-halt to /rc.local:
-	grep gpio-halt /etc/rc.local >/dev/null
-	if [ $? -eq 0 ]; then
-		# gpio-halt already in rc.local, but make sure correct:
-		sed -i "s/^.*gpio-halt.*$/\/usr\/local\/bin\/gpio-halt $HALT_PIN \&/g" /etc/rc.local >/dev/null
-	else
-		# Insert gpio-halt into rc.local before final 'exit 0'
-		sed -i "s/^exit 0/\/usr\/local\/bin\/gpio-halt $HALT_PIN \&\\nexit 0/g" /etc/rc.local >/dev/null
-	fi
-fi
-
 
 GPIORF="gpio -g mode $RF_PIN up\n\
 if [ \`gpio -g read $RF_PIN\` -eq 1 ] ; then\n\
