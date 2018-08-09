@@ -5,11 +5,12 @@
 
 The label positions are counted from the bottom-left-hand side of the page.
 If it seems a bit counter intuitive at first, there are 2 good reasons for this:
-* The PDF coordinate system is working that way, so there is no need to swap values
-* When printing with an inkjet printer, it is better if the feeding of the page is starting with the thickest part (i.e. with labels still present). By printing, thus removing, labels always at the bottom, it is safer when doing it by small batches.
+
+* The PDF coordinate system is working that way, so there is no need to swap values in the code
+* When printing with an inkjet printer, it is better if the feeding of the page is starting with the thickest part (i.e. with labels still present on sheet). By printing, thus removing, labels always at the bottom, it is safer when doing it by small batches.
 
 
-Once a label printed, the database file ```db.yaml``` needs to be updated with ```print: no```.
+Once a label is printed, the database file ```db.yaml``` needs to be updated with ```print: no``` in the corresponding entry.
 
 
 # Database format

@@ -28,8 +28,6 @@ cp INSTALL/jukebox.sh /tmp/mnt/root/INSTALL/
 cp INSTALL/jukebox.service /tmp/mnt/root/INSTALL/
 cp INSTALL/wpa_supplicant.conf /tmp/mnt/etc/wpa_supplicant/wpa_supplicant.conf
 dir /tmp/mnt/root
-#rsync -av MUSIC /tmp/mnt/
-#dir /tmp/mnt/MUSIC
 umount /tmp/mnt
 
 
