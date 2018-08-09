@@ -5,7 +5,7 @@
 * 1 x Hall Effect Switch
 * 1 x Serial RFID Module (for example RDM6300)
 * 1 x USB Sound card
-* 1 x Speakers
+* 1 x Speakers with jack plug
 * 2 x 1KΩ resistors
 * 2 x 10KΩ resistors
 * 1 x 2n7000 transistor (or equivalent)
@@ -24,15 +24,15 @@
 
 # Schematics
 
-![Schematics](schematics.jpg)
+![Schematics](schematics.png)
 
 ![Hardware](jukebox.jpg)
 
 # PCB
 
-**Beware, this PCB was designed only to try the software. It hasn't been tested at all!**
+**Beware, this PCB was designed only to try the PCB editing software. It hasn't been tested _at all_!**
 
-[Link to EasyEDA](https://easyeda.com/fguillier/jukebox)
+[Link to project on EasyEDA](https://easyeda.com/fguillier/jukebox)
 
 ![PCB Top](pcb-top.png)
 
