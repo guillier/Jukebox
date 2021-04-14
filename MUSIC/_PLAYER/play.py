@@ -26,7 +26,7 @@ class Player:
     def _end_callback(self, event):
         print(event)
         self.idle = True
-        self.next = True if len(self.medialist) else False
+        self.next = bool(len(self.medialist))
 
     def play_next(self):
         self.next = False
@@ -45,7 +45,7 @@ class Player:
     def play(self, medialist):
         if medialist is None:
             return
-        if isinstance(medialist, list) or isinstance(medialist, tuple):
+        if isinstance(medialist, (list, tuple)):
             self.medialist = list(medialist)
         else:
             self.medialist = [medialist]
@@ -189,27 +189,26 @@ player = Player()
 paused = False
 
 try:
-  while True:
-    if card.read(player.idle):
-        player.play(albums.get_media(card.current_id))
-        paused = False
-        button.led_off()
-    if player.next:
-        player.play_next()
-        paused = False
-        button.led_off()
-    else:
-        if player.idle:
-            button.led_on()
-    if button.pressed():
-        if not player.idle:
+    while True:
+        if card.read(player.idle):
+            player.play(albums.get_media(card.current_id))
+            paused = False
+            button.led_off()
+        if player.next:
+            player.play_next()
+            paused = False
+            button.led_off()
+        else:
+            if player.idle:
+                button.led_on()
+        if button.pressed() and not player.idle:
             player.pause()
             paused = not paused
             if paused:
                 button.led_breathe()
             else:
                 button.led_off()
-    time.sleep(.05)
+        time.sleep(.05)
 
 except KeyboardInterrupt:
   button.stop()

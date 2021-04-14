@@ -39,7 +39,7 @@ def print_frame(c):
     c.setLineCap(1)
     c.setStrokeColorRGB(0, 0, 0)
     c.setFillColorRGB(0, 0, 0)
-    for i in range(0, 5):
+    for i in range(5):
         c.line(0, hl * (i + 1), wl * 3, hl * (i + 1))
     c.rect(0, 0, wl * 3, hl * 5)
     c.line(wl, 0, wl, hl * 5)
