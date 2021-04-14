@@ -34,7 +34,7 @@ class Card:
             id = str(int(card_number_hex, 16))
             self.prev_id = self.current_id
             if self.prev_id:
-                self.repeat = True if self.prev_id == id else False
+                self.repeat = self.prev_id == id
             self.current_id = id
             if idle or not self.repeat:
                 return True
